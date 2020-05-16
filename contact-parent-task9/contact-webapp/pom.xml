@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>contact-webapp-task9</artifactId>
+	<name>${project.artifactId}</name>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>davidhxxx.example.rest.springbootangular</groupId>
+		<artifactId>contact-parent-task9</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<!-- my dependencies -->
+		<dependency>
+			<groupId>davidhxxx.example.rest.springbootangular</groupId>
+			<artifactId>contact-service-task9</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>davidhxxx.example.rest.springbootangular</groupId>
+					<artifactId>contact-db-task9</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>davidhxxx.example.rest.springbootangular</groupId>
+			<artifactId>contact-db-task9</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-access</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<properties>
+		<mockServices></mockServices>
+	</properties>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/mockServices.js</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<!-- ignore web.xml missing with maven-war-plugin version >=3 that specifies 
+				: failOnMissingWebXml = false -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+			<!-- Required if we want to run without profile -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${springboot.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<mockServices>&lt;script src="mockServices.js"&gt;&lt;/script&gt;</mockServices>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-devtools</artifactId>
+				</dependency>
+			</dependencies>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+				<defaultGoal>clean spring-boot:run</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<version>${springboot.version}</version>
+						<configuration>
+							<profiles>
+								<profile>dev</profile>
+							</profiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>create-db</id>
+			<build>
+				<defaultGoal>spring-boot:start</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<version>${springboot.version}</version>
+						<configuration>
+							<profiles>
+								<profile>create-db</profile>
+							</profiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

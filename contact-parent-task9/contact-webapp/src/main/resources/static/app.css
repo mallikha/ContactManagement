@@ -1,0 +1,105 @@
+.border1PxWithNoPadding {
+    border: 1px solid black;
+    padding: 0px;
+}
+
+body {
+    height: 70%;
+    background-color: rgb(245, 245, 245);
+    font-size: 12px !important;
+}
+
+.btn {
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.divider {
+    width: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+my-blue-background {
+    background-color: #337ab7;
+}
+
+.my-panel-body {
+    background-color: #DAE8E8;
+    padding: 20px;
+}
+
+.main-background-color {
+    background-color: #DAE8E8;
+}
+
+.padding-left-20px {
+    padding-left: 20px;
+}
+
+.width-80px {
+    width: 80px !important;
+}
+
+.disableClass {
+    pointer-events: none;
+}
+
+.float-left {
+    float: left;
+}
+
+
+/**
+resizer
+*/
+
+md-sidenav,
+md-sidenav.md-locked-open,
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 500px !important;
+    width: auto !important;
+    max-width: 500px !important;
+    min-height: 600px !important;
+    height: auto !important;
+    max-height: 600px !important;
+}
+
+
+/*
+   angular
+*/
+
+input.ng-dirty.ng-invalid {
+    background-color: yellow;
+}
+
+
+/*
+   Bootstrap overriding
+*/
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: #0766FF !important;
+    border-color: black !important;
+}
+
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:visited {
+    background-color: #FFB163 !important;
+    border-color: black !important;
+}
+
+
+/*
+   Against Chome CSS side effects  
+*/
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}

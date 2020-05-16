@@ -1,0 +1,55 @@
+<configuration>
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator name="exclude-resources">
+				<expression>
+					return
+					event.getRequestURI().contains(".css")
+					||
+					event.getRequestURI().contains(".html")
+					||
+					event.getRequestURI().contains(".js");
+				</expression>
+			</evaluator>
+			<OnMatch>DENY</OnMatch>
+			<onMismatch>NEUTRAL</onMismatch>
+		</filter>
+		<encoder>
+			<pattern>HTTP Request:%n%fullRequest%n HTTP
+				Response:%n%fullResponse%n Processing time: %elapsedTime%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator name="exclude-resources">
+				<expression>
+					return
+					event.getRequestURI().contains(".css")
+					||
+					event.getRequestURI().contains(".html")
+					||
+					event.getRequestURI().contains(".js");
+				</expression>
+			</evaluator>
+			<OnMatch>DENY</OnMatch>
+			<onMismatch>NEUTRAL</onMismatch>
+		</filter>
+		<file>${LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<append>true</append>
+		<encoder>
+			<pattern>HTTP Request:%n%fullRequest%n HTTP
+				Response:%n%fullResponse%n Processing time: %elapsedTime%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender-ref ref="STDOUT" />
+	<appender-ref ref="FILE" />
+</configuration>

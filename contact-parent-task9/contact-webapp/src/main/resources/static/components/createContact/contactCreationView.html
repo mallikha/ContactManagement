@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-6">
+        <ng-include src="'components/common/baseParentComponentHeaderTemplate.html'"></ng-include>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        <contact-creation on-contact-added="$ctrl.contactAdded(createdContact)" 
+                          on-error="$ctrl.displayErrorMsg(msg)"> </contact-creation>
+    </div>
+
+</div>

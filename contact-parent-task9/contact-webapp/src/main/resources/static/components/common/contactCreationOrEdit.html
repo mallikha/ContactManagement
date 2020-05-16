@@ -1,0 +1,132 @@
+<div class="panel panel-primary">
+
+    <!-- heading -->
+    <div class="panel-heading">
+        <span class="lead">{{$ctrl.title}}</span>
+    </div>
+
+    <!-- body -->
+    <div class="panel-body my-panel-body">
+
+        <form name="myForm" class="form-horizontal">
+
+                <input type="hidden" ng-model="$ctrl.contact.id" />
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">First Name *</label>
+                    <div class="col-md-7">
+                        <input type="text" autocomplete="on" ng-model="$ctrl.contact.firstName" name="firstName" placeholder="Enter your First Name" required ng-minlength="2" class="form-control input-sm" />
+                        <div class="has-error" ng-show="myForm.firstName.$dirty" ng-messages="myForm.firstName.$error">
+                            <div ng-messages-include="pages/errors.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">Last Name *</label>
+                    <div class="col-md-7">
+                        <input type="text" autocomplete="on" ng-model="$ctrl.contact.lastName" name="lastName" class="form-control input-sm" placeholder="Enter your Last Name" required ng-minlength="2" />
+                        <div class="has-error" ng-show="myForm.lastName.$dirty" ng-messages="myForm.lastName.$error" role="alert">
+                            <div ng-messages-include="pages/errors.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">Birthday</label>
+                    <div class="col-md-7">
+                        <input type="date" autocomplete="on" ng-model="$ctrl.contact.birthday" name="birthday" class="form-control input-sm" placeholder="Enter your Birthday" />
+                        <div class="has-error" ng-show="myForm.birthday.$dirty" ng-messages="myForm.birthday.$error" role="alert">
+                            <div ng-messages-include="pages/errors.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">Email *</label>
+                    <div class="col-md-7">
+                        <input type="email" autocomplete="on" ng-model="$ctrl.contact.email" name="email" class="form-control input-sm" placeholder="Enter your Email" required />
+                        <div class="has-error" ng-show="myForm.email.$dirty" ng-messages="myForm.email.$error" role="alert">
+                            <div ng-messages-include="pages/errors.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">Phone</label>
+                    <div class="col-md-7">
+                        <input type="text" autocomplete="on" ng-model="$ctrl.contact.phone" name="phone" class="form-control input-sm" placeholder="Enter your Phone" ng-minlength="8" />
+                        <div class="has-error" ng-show="myForm.phone.$dirty" ng-messages="myForm.phone.$error" role="alert">
+                            <div ng-messages-include="pages/errors.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label">Sex *</label>
+                    <div class="col-md-7">
+                        <select id="sex " ng-model="$ctrl.contact.sex " name="sex " class="form-control input-sm " required>
+                            <option ng-repeat="option in $ctrl.sexes " value="{{option.value}} ">{{option.value}}</option>
+                        </select>
+                        <div class="has-error" ng-show="myForm.sex.$dirty " ng-messages="myForm.sex.$error " role="alert ">
+                            <div ng-messages-include="pages/errors.html "></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 ">
+                      <div class="text-center ">
+                      <label>Postal Address</label>
+                      </div>
+                </div>
+
+                <div class="form-group col-md-12 ">
+                    <label class="col-md-3 control-label ">Address Line</label>
+                    <div class="col-md-7 ">
+                        <input type="text " autocomplete="on " name="addressLine " ng-model="$ctrl.contact.address.addressLine " class=" form-control input-sm " placeholder="Enter the Address Line " ng-minlength="2 " />
+                        <div class="has-error" ng-show="myForm.addressLine.$dirty " ng-messages="myForm.addressLine.$error " role="alert ">
+                            <div ng-messages-include="pages/errors.html "></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 ">
+                    <label class="col-md-3 control-label ">City</label>
+                    <div class="col-md-7 ">
+                        <input type="text " autocomplete="on " name="city " ng-model="$ctrl.contact.address.city " class="form-control input-sm " placeholder="Enter the city " ng-minlength="2 " />
+                        <div class="has-error" ng-show="myForm.city.$dirty " ng-messages="myForm.city.$error " role="alert ">
+                            <div ng-messages-include="pages/errors.html "></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 ">
+                    <label class="col-md-3 control-label ">Zip</label>
+                    <div class="col-md-7 ">
+                        <input type="text " autocomplete="on " name="zip " ng-model="$ctrl.contact.address.zip " class="form-control input-sm " placeholder="Enter the zip " ng-minlength="3 " />
+                        <div class="has-error" ng-show="myForm.zip.$dirty " ng-messages="myForm.zip.$error " role="alert ">
+                            <div ng-messages-include="pages/errors.html "></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 ">
+                    <label class="col-md-3 control-label ">Country</label>
+                    <div class="col-md-7 ">
+                        <input type="text " autocomplete="on " name="country " ng-model="$ctrl.contact.address.country " class="form-control input-sm " placeholder="Enter the country " ng-minlength="3 " />
+                        <div class="has-error" ng-show="myForm.country.$dirty " ng-messages="myForm.country.$error " role="alert ">
+                            <div ng-messages-include="pages/errors.html "></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-md-12 ">
+                    <div class="text-center ">
+                        <button type="button" ng-click="$ctrl.submitAction() " class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid ">{{$ctrl.btnFormValidationLbl}}</button>
+                        <div class="divider" />
+                        <button type="button" ng-click="$ctrl.resetAction() " class="btn btn-warning btn-sm">{{$ctrl.btnFormRevertLbl}}</button>
+                    </div>
+                </div>            
+        </form>
+    </div>
+</div>

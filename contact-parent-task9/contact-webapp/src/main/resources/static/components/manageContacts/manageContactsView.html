@@ -1,0 +1,25 @@
+<div class="row">
+
+  <div class="col-md-12">
+
+    <section layout="row">
+
+      <div layout="column" layout-align="top center">
+        <contact-list> </contact-list>
+
+        <div>
+          <md-button ng-click="$ctrl.open()" ng-hide="isOpenRight()" class="md-primary"> Toggle right </md-button>
+        </div>
+      </div>
+
+      <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right"> 
+      <contact-creation
+        on-contact-added="$ctrl.contactAdded(createdContact)" on-error="$ctrl.displayErrorMsg(msg)"> </contact-creation> 
+        
+        <md-button    ng-click="$ctrl.close()" class="md-primary"> Close Edition </md-button> </md-content> </md-sidenav>
+
+    </section>
+  </div>
+</div>
+
+

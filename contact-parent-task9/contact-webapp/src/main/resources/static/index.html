@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="myContactApp">
+
+<head>
+    <title>Contacts and Groups Management (Angular JS)</title>
+    <style>
+
+    </style>
+
+    <!-- JQUERY -->
+    <script src="lib-js/jquery-2.2.3.js"></script>
+
+    <!-- bootstrap JS v3.3.6 -->
+    <script src="lib-js/bootstrap.js"></script>
+
+    <!-- bootstrap CSS v3.3.6 > -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+    <!-- angular lib -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-mocks.js"></script>
+
+    <!-- Required for angular material -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+
+    <!-- angular extension lib -->
+    <script src="lib-js/angular-ui-router.js"></script>
+    <script src="lib-js/angular-material.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/angular-material.css">
+
+    <!-- app  -->
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <script src="app.js"></script>
+
+    <!--  native types enhancing and utility functions -->
+    <script src="util/my-util.js"></script>
+    <script src="util/contact-factory.js"></script>
+    
+
+    <!--common components-services-->
+    <script src="components/common/baseParentComponentController.js"></script>
+
+
+    <!-- services -->
+    <script src="services/contactService.js"></script>
+
+    <!-- mock services -->
+    @mockServices@
+
+    <!-- contact management components -->
+    <script src="components/manageContacts/contactsManagementView.js"></script>
+    <script src="components/manageContacts/contactList.js"></script>
+    <script src="components/manageContacts/myAddress.js"></script>
+    <script src="components/manageContacts/contactEdit.js"></script>
+
+    <!-- contact creation components -->
+    <script src="components/createContact/contactCreationView.js"></script>
+    <script src="components/createContact/contactCreation.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-2 border1PxWithNoPadding">
+                <ul class="nav nav-pills nav-stacked">
+                    <li ui-sref-active="active"><a ui-sref="manageContacts">Manage existing contacts</a></li>
+                    <li ui-sref-active="active"><a ui-sref="createContacts">Create a new contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-10">
+                <ui-view></ui-view>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<span ng-show="$ctrl.displayMode == 'LONG'">
+    {{$ctrl.address.addressLine}}
+    <br/> {{$ctrl.address.zip}} - {{$ctrl.address.city}}
+    <br/> {{$ctrl.address.country}}
+</span>
+
+<span ng-show="$ctrl.displayMode == 'SHORT'">
+    {{$ctrl.address.city}} / {{$ctrl.address.country}}
+</span>

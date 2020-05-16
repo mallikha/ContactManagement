@@ -1,0 +1,57 @@
+<div class="panel panel-primary">
+
+    <!-- heading -->
+    <div class="panel-heading">
+        <span class="lead">Contacts</span>
+    </div>
+
+    <!-- body -->
+    <div>
+
+        <table class="table table-hover table-bordered">
+            <!--    <table>-->
+
+            <thead class="main-background-color">
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birthday</th>
+                    <th style="word-wrap: break-word; ">Email</th>
+                    <th>Phone</th>
+                    <th>Sex</th>
+                    <th>
+                        <span>Address </span>
+                        <span ng-show="$ctrl.isShortAddressMode() ">
+                            <a style="font-size: 10px " ng-click="$ctrl.toggleAddressMode() " value="Full ">Full</a>
+                        </span>
+                        <span ng-show="$ctrl.isFullAddressMode() ">                            
+                            <a style="font-size: 10px " ng-click="$ctrl.toggleAddressMode() " value="Short ">Short</a>
+                        </span>
+                    </th>
+                    <th class="col-md-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr ng-repeat="c in $ctrl.contacts ">
+                    <td>{{c.id}}</td>
+                    <td>{{c.firstName}}</td>
+                    <td>{{c.lastName}}</td>
+                    <td>{{c.birthday | date:'MM/dd/yyyy'}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.phone}}</td>
+                    <td>{{c.sex}}</td>
+                    <td>
+                        <my-address address="c.address " display-mode="$ctrl.addressMode ">
+                        </my-address>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="$ctrl.editAction(c)" class="btn btn-success btn-xs width-80px">Edit</button>
+                        <button type="button" ng-click="$ctrl.deleteAction(c)" class="btn btn-danger btn-xs width-80px">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- </div>-->
+    </div>
+</div>

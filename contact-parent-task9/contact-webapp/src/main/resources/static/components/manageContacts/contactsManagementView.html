@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-12">
+    <ng-include src="'components/common/baseParentComponentHeaderTemplate.html'"></ng-include>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-12">
+  
+     <section>
+  
+        <div>
+	      <contact-list on-error="$ctrl.displayErrorMsg(msg)" 
+                        on-edit-request="$ctrl.handleEditRequest(contact)" 
+                        on-contact-deleted="$ctrl.contactDeleted(contactId)"
+                        api="$ctrl.apiContactList"> 
+           </contact-list>
+        </div>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="rightComponent"> 
+           <contact-edit on-error="$ctrl.displayErrorMsg(msg)"
+                         on-cancel="$ctrl.contactEditCanceled()"
+                         on-update="$ctrl.contactUpdated(contact)"                        
+                         on-init="$ctrl.registerApiContactEdit(api)">
+           </contact-edit>
+        </md-sidenav>
+                 
+     </section>
+  </div>
+</div>
+
+
