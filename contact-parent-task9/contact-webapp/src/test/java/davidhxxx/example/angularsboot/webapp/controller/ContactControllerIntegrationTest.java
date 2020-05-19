@@ -53,7 +53,7 @@ public class ContactControllerIntegrationTest {
 
 		// assertion
 		Assert.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-		Long idRetrieved = retrieveIdFrom(responseEntity);
+		String idRetrieved = retrieveIdFrom(responseEntity);
 		ResponseEntity<ContactDTO[]> responseEntityGetEntities = template.getForEntity(getBaseUrl(),
 				ContactDTO[].class);
 		List<ContactDTO> contacts = Arrays.asList(responseEntityGetEntities.getBody());
@@ -77,7 +77,7 @@ public class ContactControllerIntegrationTest {
 		Assert.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
 
 		// action
-		Long idLastCreatedContact = retrieveIdFrom(responseEntity);
+		String idLastCreatedContact = retrieveIdFrom(responseEntity);
 		contact = new ContactDTO();
 		contact.setId(idLastCreatedContact);
 		contact.setFirstName("Martino");
@@ -106,7 +106,7 @@ public class ContactControllerIntegrationTest {
 		ResponseEntity<ContactDTO> responseEntity = template.postForEntity(getBaseUrl(), firstContact,
 				ContactDTO.class);
 		Assert.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-		Long idContactThatWillRemain = retrieveIdFrom(responseEntity);
+		String idContactThatWillRemain = retrieveIdFrom(responseEntity);
 
 		// contact creation Two that we will delete
 		ContactDTO secondContact = new ContactDTO();
@@ -115,7 +115,7 @@ public class ContactControllerIntegrationTest {
 		responseEntity = template.postForEntity(getBaseUrl(), secondContact, ContactDTO.class);
 		Assert.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
 
-		Long idLastCreatedContact = retrieveIdFrom(responseEntity);
+		String idLastCreatedContact = retrieveIdFrom(responseEntity);
 		template.delete(getBaseUrl() + "/" + idLastCreatedContact);
 
 		// assertion
@@ -129,10 +129,13 @@ public class ContactControllerIntegrationTest {
 		Assert.assertEquals(firstContact.getLastName(), actualContact.getLastName());
 	}
 
-	private long retrieveIdFrom(ResponseEntity<ContactDTO> responseEntity) {
+	private String retrieveIdFrom(ResponseEntity<ContactDTO> responseEntity) {
 		String path = responseEntity.getHeaders().getLocation().getPath();
 		int indexOf = path.lastIndexOf("/");
-		long idLastCreatedContact = Long.valueOf(path.substring(indexOf + 1));
+		String idLastCreatedContact = //Long.valueOf(
+				path.substring(indexOf + 1)
+				//)
+;
 		return idLastCreatedContact;
 	}
 

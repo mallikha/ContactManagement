@@ -48,7 +48,7 @@ public class ContactController {
 	public ResponseEntity<?> create(@RequestBody ContactDTO contactDTO, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		Long contactId = contactService.insertContact(contactDTO);
+		String contactId = contactService.insertContact(contactDTO);
 		final ResponseEntity<Void> responseEntity = ResponseEntity
 				.created(new URI("/api/contacts/" + contactId.toString())).build();
 		return responseEntity;
@@ -58,7 +58,7 @@ public class ContactController {
 	 * PUT /contacts/{id} -> update
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody ContactDTO contactDTO,
+	public ResponseEntity<?> update(@PathVariable String id, @RequestBody ContactDTO contactDTO,
 			HttpServletRequest request, HttpServletResponse response) throws URISyntaxException {
 
 		if (id == null || contactDTO.getId() == null || !id.equals(contactDTO.getId())) {
@@ -72,7 +72,7 @@ public class ContactController {
 	 * DELETE /contacts/{id} -> delete one
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> delete(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<?> delete(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
 		contactService.deleteContact(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

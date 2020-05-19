@@ -9,15 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "ADDRESS")
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+//@Entity
+//@Table(name = "ADDRESS")
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	private String id;
 
 	@Column
 	private String addressLine;
@@ -34,11 +37,11 @@ public class Address implements Serializable {
 	public Address() {
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

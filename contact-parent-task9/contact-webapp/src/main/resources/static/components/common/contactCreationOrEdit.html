@@ -12,7 +12,7 @@
 
                 <input type="hidden" ng-model="$ctrl.contact.id" />
                 <div class="form-group col-md-12">
-                    <label class="col-md-3 control-label">First Name *</label>
+                    <label class="col-md-3 control-label" color ="red">First Name *</label>
                     <div class="col-md-7">
                         <input type="text" autocomplete="on" ng-model="$ctrl.contact.firstName" name="firstName" placeholder="Enter your First Name" required ng-minlength="2" class="form-control input-sm" />
                         <div class="has-error" ng-show="myForm.firstName.$dirty" ng-messages="myForm.firstName.$error">

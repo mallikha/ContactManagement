@@ -11,7 +11,7 @@ public class ContactDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private String id;
 
 	private Sex sex;
 
@@ -30,11 +30,11 @@ public class ContactDTO implements Serializable {
 
 	private String phone;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

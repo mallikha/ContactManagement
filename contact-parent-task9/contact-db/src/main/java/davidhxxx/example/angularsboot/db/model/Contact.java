@@ -14,17 +14,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import davidhxxx.example.angularsboot.common.Sex;
 
-@Entity
-@Table(name = "CONTACT")
+@Document
+//@Entity
+//@Table(name = "CONTACT")
 public class Contact implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	private String id;
 
 	@Column(name = "firstName")
 	private String firstName;
@@ -38,8 +41,8 @@ public class Contact implements Serializable {
 	@Column(name = "salary")
 	private Double salary;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	@JoinColumn(name = "ADDRESS_FK", unique = true, nullable = true, updatable = true)
+	//@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+	//@JoinColumn(name = "ADDRESS_FK", unique = true, nullable = true, updatable = true)
 	private Address address;
 
 	@Column
@@ -53,7 +56,7 @@ public class Contact implements Serializable {
 	public Contact() {
 	}
 
-	public Contact(Long id, String firstName, String lastName, String email, Double salary) {
+	public Contact(String id, String firstName, String lastName, String email, Double salary) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -61,11 +64,11 @@ public class Contact implements Serializable {
 		this.salary = salary;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

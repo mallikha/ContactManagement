@@ -18,7 +18,12 @@
                 name: 'createContacts',
                 url: '/createContacts',
                 component: 'contactCreationView'
-		}
+		},
+		  {
+            name: 'searchcontact',
+            url: '/searchcontact',
+            component: 'contactSearchView'
+	}
 
 	];
 

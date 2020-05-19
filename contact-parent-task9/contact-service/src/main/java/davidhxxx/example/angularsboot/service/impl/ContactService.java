@@ -28,7 +28,7 @@ public class ContactService {
 		return contactsDTO;
 	}
 
-	public Long insertContact(ContactDTO contactDTO) {
+	public String insertContact(ContactDTO contactDTO) {
 		Contact contact = modelMapperService.map(contactDTO, Contact.class);
 		contactRepository.save(contact);
 		return contact.getId();
@@ -39,7 +39,7 @@ public class ContactService {
 		contactRepository.save(contact);
 	}
 
-	public void deleteContact(Long contactId) {
+	public void deleteContact(String contactId) {
 		contactRepository.delete(contactId);
 	}
 
